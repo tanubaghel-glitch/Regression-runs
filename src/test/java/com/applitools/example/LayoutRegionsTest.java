@@ -31,6 +31,7 @@ public class LayoutRegionsTest {
         EyesRunner runner = null;
         Eyes eyes = null;
         WebDriver driver = null;
+        boolean exceptionThrown = false;
 
         try {
             // Configure Applitools SDK to run on the Ultrafast Grid
@@ -78,6 +79,7 @@ public class LayoutRegionsTest {
             eyes.closeAsync();
         }
         catch (Exception e) {
+            exceptionThrown = true;
             e.printStackTrace();
             if (eyes != null)
                 eyes.abortAsync();
@@ -88,7 +90,7 @@ public class LayoutRegionsTest {
                 TestResultsSummary allTestResults = runner.getAllTestResults();
                 System.out.println(allTestResults);
             }
-            System.exit(0);
+            System.exit(exceptionThrown ? 1 : 0);
         }
     }
 }

@@ -39,6 +39,7 @@ public class AcmeBankTests {
         EyesRunner runner = null;
         Eyes eyes = null;
         WebDriver driver = null;
+        boolean exceptionThrown = false;
 
         try {
             // Configure Applitools SDK to run on the Ultrafast Grid
@@ -214,6 +215,7 @@ public class AcmeBankTests {
             batchClose.setBatchId(Collections.singletonList(batchId)).close();
         }
         catch (Exception e) {
+            exceptionThrown = true;
             e.printStackTrace();
             if (eyes != null)
                 eyes.abortAsync();
@@ -221,7 +223,7 @@ public class AcmeBankTests {
             if (driver != null)
                 driver.quit();
 
-            boolean failed = !FAILURES.isEmpty();
+            boolean failed = exceptionThrown || !FAILURES.isEmpty();
             if (runner != null) {
 //                TestResultsSummary allTestResults = runner.getAllTestResults(false);
 //                for (TestResultContainer container : allTestResults.getAllResults()) {
