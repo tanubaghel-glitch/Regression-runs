@@ -76,8 +76,8 @@ public class AcmeBankTests {
 
             // Start Applitools Visual AI Test
             eyes.open(driver,"Nyka", "Nyka-Page", new RectangleSize(1200, 600));
-            driver.get("https://www.nykaa.com/");
-            Thread.sleep(60000); // 1 minute
+            driver.get("https://www.wikipedia.org/");
+//            Thread.sleep(60000); // 1 minute
 
 //            new WebDriverWait(driver, Duration.ofSeconds(10))
 //                    .until(ExpectedConditions.visibilityOfElementLocated(By.id("log-in")));
