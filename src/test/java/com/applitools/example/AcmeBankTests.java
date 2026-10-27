@@ -64,6 +64,10 @@ public class AcmeBankTests {
             );
             eyes.setConfiguration(config);
             ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless=new");
+            options.addArguments("--disable-dev-shm-usage"); // the key fix for "tab crashed"
+            options.addArguments("--no-sandbox");
+            options.addArguments("--window-size=1280,1024");
             if (Boolean.parseBoolean(System.getenv("HEADLESS"))) {
                 options.addArguments("--headless=new");
             }
