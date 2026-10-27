@@ -28,7 +28,7 @@ import java.util.List;
 
 public class AcmeBankTests {
 
-    private final static BatchInfo BATCH = new BatchInfo("ACME Login - functional vs visual");
+    private final static BatchInfo BATCH = new BatchInfo("Nyka");
 
     // Soft-assertion log: every functional check is recorded, failures don't stop the run
     private static final List<String> FAILURES = new ArrayList<>();
@@ -45,8 +45,8 @@ public class AcmeBankTests {
             // Configure Applitools SDK to run on the Ultrafast Grid
             BATCH.addProperty("TestingProperty", "myfirstpropertyadded");
             BATCH.setSequenceName("ACME Login Nightly");
-            BATCH.setId("0bb869f6-115e-4a81-89cb-492d78f069");
-            BATCH.setNotifyOnCompletion(true);
+//            BATCH.setId("0bb869f6-115e-4a81-89cb-492d78f069");
+//            BATCH.setNotifyOnCompletion(true);
             runner = new VisualGridRunner(new RunnerOptions().testConcurrency(5));
 //            runner.setDontCloseBatches(true);
             eyes = new Eyes(runner);
@@ -71,8 +71,10 @@ public class AcmeBankTests {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
             // Start Applitools Visual AI Test
-            eyes.open(driver,"ACME", "ACME- with matchlevel and region", new RectangleSize(1200, 600));
-            driver.get("https://demo.applitools.com/");
+            eyes.open(driver,"Nyka", "Nyka-Page", new RectangleSize(1200, 600));
+            driver.get("https://www.nykaa.com/");
+            Thread.sleep(60000); // 1 minute
+
 //            new WebDriverWait(driver, Duration.ofSeconds(10))
 //                    .until(ExpectedConditions.visibilityOfElementLocated(By.id("log-in")));
 //
@@ -210,9 +212,9 @@ public class AcmeBankTests {
 
             // End Applitools Eyes Visual AI Test
             eyes.closeAsync();
-            String batchId = BATCH.getId();
-            BatchClose batchClose = new BatchClose();
-            batchClose.setBatchId(Collections.singletonList(batchId)).close();
+//            String batchId = BATCH.getId();
+//            BatchClose batchClose = new BatchClose();
+//            batchClose.setBatchId(Collections.singletonList(batchId)).close();
         }
         catch (Exception e) {
             exceptionThrown = true;
@@ -225,12 +227,12 @@ public class AcmeBankTests {
 
             boolean failed = exceptionThrown || !FAILURES.isEmpty();
             if (runner != null) {
-//                TestResultsSummary allTestResults = runner.getAllTestResults(false);
-//                for (TestResultContainer container : allTestResults.getAllResults()) {
-//                    if (container.getTestResults() != null && !container.getTestResults().isPassed()) {
-//                        failed = true;
-//                    }
-//                }
+                TestResultsSummary allTestResults = runner.getAllTestResults(false);
+                for (TestResultContainer container : allTestResults.getAllResults()) {
+                    if (container.getTestResults() != null && !container.getTestResults().isPassed()) {
+                        failed = true;
+                    }
+                }
             }
             System.exit(failed ? 1 : 0);
         }
