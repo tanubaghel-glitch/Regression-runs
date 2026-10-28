@@ -28,7 +28,7 @@ import java.util.List;
 
 public class AcmeBankTests {
 
-    private final static BatchInfo BATCH = new BatchInfo("Nyka");
+    private final static BatchInfo BATCH = new BatchInfo("Apple-Testcase");
 
     // Soft-assertion log: every functional check is recorded, failures don't stop the run
     private static final List<String> FAILURES = new ArrayList<>();
@@ -43,8 +43,8 @@ public class AcmeBankTests {
 
         try {
             // Configure Applitools SDK to run on the Ultrafast Grid
-            BATCH.addProperty("TestingProperty", "myfirstpropertyadded");
-            BATCH.setSequenceName("ACME Login Nightly");
+//            BATCH.addProperty("TestingProperty", "myfirstpropertyadded");
+//            BATCH.setSequenceName("ACME Login Nightly");
 //            BATCH.setId("0bb869f6-115e-4a81-89cb-492d78f069");
 //            BATCH.setNotifyOnCompletion(true);
             runner = new VisualGridRunner(new RunnerOptions().testConcurrency(5));
@@ -56,11 +56,11 @@ public class AcmeBankTests {
             config.setMatchLevel(MatchLevel.LAYOUT);
 //            config.setBranchName("MyFirstBranchName");
             config.addBrowsers(
-                    new DesktopBrowserInfo(800, 1024, BrowserType.CHROME),
-                    new DesktopBrowserInfo(1600, 1200, BrowserType.FIREFOX),
-                    new DesktopBrowserInfo(1024, 768, BrowserType.SAFARI),
-                    new ChromeEmulationInfo(DeviceName.Pixel_2, ScreenOrientation.PORTRAIT),
-                    new ChromeEmulationInfo(DeviceName.Nexus_10, ScreenOrientation.LANDSCAPE)
+                    new DesktopBrowserInfo(800, 1024, BrowserType.CHROME)
+//                    new DesktopBrowserInfo(1600, 1200, BrowserType.FIREFOX),
+//                    new DesktopBrowserInfo(1024, 768, BrowserType.SAFARI),
+//                    new ChromeEmulationInfo(DeviceName.Pixel_2, ScreenOrientation.PORTRAIT),
+//                    new ChromeEmulationInfo(DeviceName.Nexus_10, ScreenOrientation.LANDSCAPE)
             );
             eyes.setConfiguration(config);
             ChromeOptions options = new ChromeOptions();
@@ -75,8 +75,8 @@ public class AcmeBankTests {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
             // Start Applitools Visual AI Test
-            eyes.open(driver,"Nyka", "Nyka-Page", new RectangleSize(1200, 600));
-            driver.get("https://www.wikipedia.org/");
+            eyes.open(driver,"Apple", "Apple-HomePage", new RectangleSize(1200, 600));
+            driver.get("https://www.apple.com/");
 //            Thread.sleep(60000); // 1 minute
 
 //            new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -193,7 +193,7 @@ public class AcmeBankTests {
             // VISUAL AI VALIDATION - one line covers everything above and more
             // =====================================================================
             eyes.check(
-                    Target.window().fully().withName("Main page")); // strict, button as layout region
+                    Target.window().fully().withName("Apple Main page")); // strict, button as layout region
 
 //            eyes.check("Main page with dynamic",
 //                    Target.window().fully().matchLevel(MatchLevel.DYNAMIC));
