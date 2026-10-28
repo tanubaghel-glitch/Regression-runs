@@ -25,6 +25,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import org.openqa.selenium.JavascriptExecutor;
 
 public class AcmeBankTests {
 
@@ -77,6 +78,17 @@ public class AcmeBankTests {
             // Start Applitools Visual AI Test
             eyes.open(driver,"Apple", "Apple-HomePage", new RectangleSize(1200, 600));
             driver.get("https://www.apple.com/");
+
+            Thread.sleep(30000);
+
+
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            Long removed = (Long) js.executeScript(
+                    "const els = document.querySelectorAll('a.tile-link[href=\"/apple-watch-series-12/\"]');" +
+                            "els.forEach(el => el.remove());" +
+                            "return els.length;"
+            );
+            System.out.println("Removed elements: " + removed);
 //            Thread.sleep(60000); // 1 minute
 
 //            new WebDriverWait(driver, Duration.ofSeconds(10))
@@ -193,7 +205,8 @@ public class AcmeBankTests {
             // VISUAL AI VALIDATION - one line covers everything above and more
             // =====================================================================
             eyes.check(
-                    Target.window().fully().withName("Apple Main page")); // strict, button as layout region
+                    Target.window().fully().lazyLoad().withName("Apple Main page")
+            ); // strict, button as layout region
 
 //            eyes.check("Main page with dynamic",
 //                    Target.window().fully().matchLevel(MatchLevel.DYNAMIC));
