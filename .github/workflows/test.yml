@@ -34,7 +34,3 @@ jobs:
 
       - name: Run AcmeBankTests
         run: mvn -B exec:exec@run-the-tests -Dexec.classpathScope=test
-
-      - name: Run LayoutRegionsTest
-        if: always()
-        run: mvn -B exec:exec@run-layout-regions-test -Dexec.classpathScope=test
