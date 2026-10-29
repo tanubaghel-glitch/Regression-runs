@@ -6,6 +6,8 @@ It shows how to start automating visual tests
 with [Applitools Eyes](https://applitools.com/platform/eyes/)
 and [Selenium WebDriver](https://www.selenium.dev/) in Java.
 
+
+
 It uses:
 
 * [Java](https://www.java.com/) as the programming language
