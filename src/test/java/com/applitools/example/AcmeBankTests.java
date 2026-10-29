@@ -28,7 +28,7 @@ import java.util.List;
 
 public class AcmeBankTests {
 
-    private final static BatchInfo BATCH = new BatchInfo("ACME Login - functional vs visual");
+    private final static BatchInfo BATCH = new BatchInfo("Apple testcases");
 
     // Soft-assertion log: every functional check is recorded, failures don't stop the run
     private static final List<String> FAILURES = new ArrayList<>();
@@ -71,7 +71,7 @@ public class AcmeBankTests {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
             // Start Applitools Visual AI Test
-            eyes.open(driver,"apple-testcases", "test 1", new RectangleSize(1200, 600));
+            eyes.open(driver,"apple-testcases2", "test 2", new RectangleSize(1200, 600));
             driver.get("https://demo.applitools.com/");
 //            new WebDriverWait(driver, Duration.ofSeconds(10))
 //                    .until(ExpectedConditions.visibilityOfElementLocated(By.id("log-in")));
