@@ -1,3 +1,4 @@
+
 # Applitools Example: Basic Selenium WebDriver in Java
 
 This is the example project for the [Selenium Java Basic tutorial](https://applitools.com/tutorials).
