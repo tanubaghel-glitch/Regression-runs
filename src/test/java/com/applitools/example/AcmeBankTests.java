@@ -70,7 +70,7 @@ public class AcmeBankTests {
             driver = new ChromeDriver(options);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
-            // Start Applitools Visual AI Test
+            // Start Applitools Visual AI Test jbhjdgjgfhjbhgfbghf
             eyes.open(driver,"apple-testcases2", "test 2", new RectangleSize(1200, 600));
             driver.get("https://demo.applitools.com/");
 //            new WebDriverWait(driver, Duration.ofSeconds(10))
