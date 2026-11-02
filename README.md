@@ -34,6 +34,10 @@ By default, the project will run tests with Ultrafast Grid but not Execution Clo
 You can change these settings in the test class.
 
 To execute tests, set the `APPLITOOLS_API_KEY` environment variable
+
+
+
+
 to your [account's API key](https://applitools.com/tutorials/getting-started/registering-an-account).
 
 Install the dependencies
